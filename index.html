@@ -6,7 +6,7 @@
   <meta name="description" content="Mi-Memory: A Lifecycle Memory Framework for Personal AI." />
   <meta property="og:title" content="Mi-Memory" />
   <meta property="og:description" content="A lifecycle memory framework for personal AI across structure, expansion, evolution, and deployment." />
-  <meta property="og:image" content="https://raw.githubusercontent.com/Darwin-Agent/Mi-Memory/master/figure/banner.png" />
+  <meta property="og:image" content="figure/banner.png" />
   <title>Mi-Memory</title>
   <style>
     :root {
@@ -287,14 +287,105 @@
       line-height: 1.65;
     }
 
+    .card .tag {
+      display: inline-flex;
+      margin-bottom: 12px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 0.76rem;
+      font-weight: 760;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+
+    .module-list {
+      display: grid;
+      gap: 0;
+      margin-top: 18px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: rgba(255, 255, 255, 0.78);
+      box-shadow: 0 18px 48px -42px rgba(18, 19, 23, 0.55);
+    }
+
+    .module-row {
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      gap: 22px;
+      padding: 20px 24px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .module-row:last-child { border-bottom: 0; }
+
+    .module-row strong {
+      color: var(--accent);
+      font-size: 0.95rem;
+      letter-spacing: -0.01em;
+    }
+
+    .module-row span {
+      color: var(--muted);
+      font-size: 0.96rem;
+      line-height: 1.62;
+    }
+
+    .trace {
+      display: flex;
+      align-items: stretch;
+      gap: 0;
+      margin-top: 18px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: linear-gradient(135deg, var(--accent-soft), #fff 72%);
+    }
+
+    .trace-step {
+      position: relative;
+      flex: 1;
+      padding: 20px;
+    }
+
+    .trace-step + .trace-step { border-left: 1px solid rgba(255, 105, 0, 0.16); }
+
+    .trace-step::after {
+      content: "→";
+      position: absolute;
+      top: 20px;
+      right: -8px;
+      z-index: 1;
+      color: var(--accent);
+      font-weight: 800;
+    }
+
+    .trace-step:last-child::after { content: none; }
+
+    .trace-step strong {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--accent);
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .trace-step span {
+      display: block;
+      color: #3d4148;
+      font-size: 0.94rem;
+      line-height: 1.58;
+    }
+
     .figure-card {
       overflow: hidden;
       margin-top: 34px;
-      padding: 16px;
-      border: 1px solid var(--line);
-      border-radius: 26px;
-      background: var(--panel);
-      box-shadow: var(--shadow);
+      padding: 0;
+      border-radius: 18px;
+      background: transparent;
     }
 
     .figure-card img {
@@ -350,6 +441,123 @@
       font-size: 1.06rem;
     }
 
+    .note {
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .evidence-ribbon {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .evidence-pill {
+      padding: 16px 18px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.84);
+    }
+
+    .evidence-pill strong {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--accent);
+      font-size: 0.82rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .evidence-pill span {
+      color: #3d4148;
+      font-size: 0.92rem;
+      line-height: 1.55;
+    }
+
+    .chart-card {
+      margin-top: 24px;
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: rgba(255, 255, 255, 0.84);
+    }
+
+    .bar-chart {
+      display: grid;
+      gap: 14px;
+      margin-top: 6px;
+    }
+
+    .bar-row {
+      display: grid;
+      grid-template-columns: 120px 1fr 72px;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .bar-label {
+      color: #2d3036;
+      font-size: 0.93rem;
+      font-weight: 620;
+      white-space: nowrap;
+    }
+
+    .bar-label .mini-tag {
+      display: inline-flex;
+      align-items: center;
+      margin-left: 6px;
+      padding: 2px 6px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 0.68rem;
+      font-weight: 760;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      vertical-align: middle;
+    }
+
+    .bar-track {
+      overflow: hidden;
+      height: 12px;
+      border-radius: 999px;
+      background: #edf1f5;
+    }
+
+    .bar-fill {
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, #ff8d3a 0%, var(--accent) 100%);
+      box-shadow: 0 10px 28px -20px rgba(255, 105, 0, 0.75);
+    }
+
+    .bar-value {
+      color: var(--muted);
+      font-size: 0.92rem;
+      font-variant-numeric: tabular-nums;
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    .result-notes {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .result-note {
+      padding: 12px 14px;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.84);
+      border: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+
     pre {
       overflow-x: auto;
       margin: 20px 0 0;
@@ -377,8 +585,16 @@
     @media (max-width: 780px) {
       .nav-links { display: none; }
       .hero { padding-top: 122px; }
-      .grid, .grid.two-column, .metrics { grid-template-columns: 1fr; }
-      .card, .metric, .quote { padding: 20px; }
+      .grid, .grid.two-column, .metrics, .evidence-ribbon { grid-template-columns: 1fr; }
+      .module-row { grid-template-columns: 1fr; gap: 6px; }
+      .trace { flex-direction: column; }
+      .trace-step + .trace-step { border-top: 1px solid rgba(255, 105, 0, 0.16); border-left: 0; }
+      .trace-step::after { content: none; }
+      .bar-row { grid-template-columns: 1fr; gap: 8px; }
+      .bar-value { text-align: left; }
+      .bar-label, .bar-value { white-space: normal; }
+      .result-notes { grid-template-columns: 1fr; }
+      .card, .metric, .quote, .trace-step { padding: 20px; }
     }
   </style>
 </head>
@@ -416,13 +632,13 @@
         <span>53-page technical report</span>
       </div>
       <div class="actions">
-        <a class="button primary" href="https://github.com/Darwin-Agent/Mi-Memory/raw/master/paper.pdf" target="_blank" rel="noopener noreferrer">Read Report</a>
+        <a class="button primary" href="https://arxiv.org/abs/2607.18975" target="_blank" rel="noopener noreferrer">Read Report</a>
         <a class="button" href="https://github.com/Darwin-Agent/Mi-Memory" target="_blank" rel="noopener noreferrer">GitHub</a>
       </div>
     </header>
 
     <div class="banner" aria-label="Mi-Memory banner">
-      <img src="https://raw.githubusercontent.com/Darwin-Agent/Mi-Memory/master/figure/banner.png" alt="Mi-Memory banner visual" />
+      <img src="figure/banner.png" alt="Mi-Memory banner visual" />
     </div>
 
     <section id="overview">
@@ -446,14 +662,20 @@
           <p>Substrate-independent memory variants for cloud, edge, and lightweight local environments.</p>
         </article>
       </div>
+      <div class="evidence-ribbon">
+        <div class="evidence-pill"><strong>Controlled reference</strong><span>Public benchmark with a reproduced baseline under a shared harness.</span></div>
+        <div class="evidence-pill"><strong>Module-level</strong><span>Standalone component on a public benchmark with its own harness.</span></div>
+        <div class="evidence-pill"><strong>Preliminary/internal</strong><span>Internal benchmark evidence with external validity still pending.</span></div>
+        <div class="evidence-pill"><strong>Transfer feasibility</strong><span>Capability mapped to a lighter substrate and task style.</span></div>
+      </div>
     </section>
 
     <section id="architecture">
       <h2 class="section-title">A shared audit contract across the lifecycle.</h2>
       <p class="lead">Mi-Memory links structure, expansion, evolution, and deployment through typed evidence payloads, diagnostic traces, strategy artifacts, and gate/rollback records. The same artifact families support research diagnostics and product-facing memory governance.</p>
       <div class="figure-card">
-        <img src="https://raw.githubusercontent.com/Darwin-Agent/Mi-Memory/master/figure/mimemory.png" alt="Mi-Memory lifecycle architecture" />
-        <p class="caption">Mi-Memory lifecycle overview: structure, expansion, evolution, and deployment are connected by auditable memory artifacts.</p>
+        <img src="figure/mimemory.png" alt="Mi-Memory lifecycle overview" />
+        <p class="caption">Lifecycle overview: Structure, Expansion, Evolution, and Deployment are connected by auditable memory artifacts.</p>
       </div>
     </section>
 
@@ -470,18 +692,49 @@
           <p>Retrieval and context assembly preserve where memory came from, why it was selected, and how it can be inspected.</p>
         </article>
       </div>
+      <div class="module-list">
+        <div class="module-row"><strong>MemStack</strong><span>Structures durable state with layered L0/L1/L2 memory, hybrid retrieval, bounded context assembly, and adapter contracts.</span></div>
+        <div class="module-row"><strong>MemSense</strong><span>Turns visual and multimodal observations into source-aware evidence rather than disposable attachments.</span></div>
+        <div class="module-row"><strong>MemFuse</strong><span>Links related observations across cars, homes, phones, wearables, and tools into coherent episodes.</span></div>
+        <div class="module-row"><strong>LiteMem</strong><span>Transfers selected contract elements to Markdown/Git artifacts and file-tool retrieval for lightweight settings.</span></div>
+      </div>
+      <p class="lead" style="margin-top: 26px;">The report grounds the lifecycle with a human-car-home training handoff: a parent, a car route, a phone calendar, and a home camera jointly determine whether the assistant should remind the family about a basketball bag before entering the expressway.</p>
+      <div class="trace">
+        <div class="trace-step"><strong>Observe</strong><span>Calendar, vehicle route state, and home camera evidence arrive with source identity and timestamps.</span></div>
+        <div class="trace-step"><strong>Fuse</strong><span>The system links training time, travel feasibility, and the observed bag location into one episode.</span></div>
+        <div class="trace-step"><strong>Answer</strong><span>The assistant retrieves the fused episode and answers with inspectable supporting evidence.</span></div>
+        <div class="trace-step"><strong>Improve</strong><span>User corrections become gated memory-policy updates rather than hidden prompt or retrieval edits.</span></div>
+      </div>
     </section>
 
     <section id="results">
       <h2 class="section-title">Evaluation highlights.</h2>
-      <p class="lead">The report evaluates Mi-Memory across structure benchmarks, expansion modules, transfer feasibility, and design-level evidence boundaries.</p>
-      <div class="metrics">
-        <div class="metric"><strong>93.59%</strong><span>LoCoMo judge accuracy on the structure track.</span></div>
-        <div class="metric"><strong>89.15%</strong><span>Mem-Gallery judge accuracy using 3-vote aggregation.</span></div>
-        <div class="metric"><strong>97.0%</strong><span>Capability retention for Light-Memory on LoCoMo.</span></div>
-        <div class="metric"><strong>87.47%</strong><span>LongMemEval judge accuracy on the structure track.</span></div>
-        <div class="metric"><strong>57.24%</strong><span>PersonaMem-V2 preference accuracy.</span></div>
-        <div class="metric"><strong>33.1%</strong><span>MemFuseBench checklist score for expansion evidence.</span></div>
+      <p class="lead">The report evaluates Mi-Memory across structure benchmarks, expansion modules, governed offline evolution, and deployment transfer. These numbers are evidence anchors rather than a single leaderboard; the PDF is authoritative for protocols and boundaries.</p>
+      <div class="chart-card">
+        <div class="bar-chart">
+          <div class="bar-row"><span class="bar-label">LoCoMo</span><div class="bar-track"><div class="bar-fill" style="width: 93.59%"></div></div><span class="bar-value">93.59%</span></div>
+          <div class="bar-row"><span class="bar-label">Mem-Gallery</span><div class="bar-track"><div class="bar-fill" style="width: 89.15%"></div></div><span class="bar-value">89.15%</span></div>
+          <div class="bar-row"><span class="bar-label">LongMemEval</span><div class="bar-track"><div class="bar-fill" style="width: 87.47%"></div></div><span class="bar-value">87.47%</span></div>
+          <div class="bar-row"><span class="bar-label">PersonaMem-V2</span><div class="bar-track"><div class="bar-fill" style="width: 57.24%"></div></div><span class="bar-value">57.24%</span></div>
+          <div class="bar-row"><span class="bar-label">MemFuseBench</span><div class="bar-track"><div class="bar-fill" style="width: 35.2%"></div></div><span class="bar-value">35.2%</span></div>
+          <div class="bar-row"><span class="bar-label">LoCoMo offline</span><div class="bar-track"><div class="bar-fill" style="width: 94.74%"></div></div><span class="bar-value">94.74%</span></div>
+          <div class="bar-row"><span class="bar-label">LiteMem <span class="mini-tag">lite</span></span><div class="bar-track"><div class="bar-fill" style="width: 90.81%"></div></div><span class="bar-value">90.81%</span></div>
+        </div>
+      </div>
+      <div class="result-notes">
+        <div class="result-note">D²ACCI/E²MEND improves a LoCoMo offline run from 75.58% to 94.74%.</div>
+        <div class="result-note">LiteMem is a deployment path, not a benchmark, and reports 90.81% transfer plus 90.0% retention.</div>
+      </div>
+      <p class="lead" style="margin-top: 30px;">Mi-Memory is an initial step toward personal-AI memory that can be measured, governed, and improved across its full lifecycle.</p>
+      <div class="grid two-column" style="margin-top: 16px;">
+        <article class="card">
+          <h3>Causal attribution and forgetting</h3>
+          <p>Future work targets stronger answer-to-evidence tracing and propagation-complete forgetting across derived summaries, profiles, and caches.</p>
+        </article>
+        <article class="card">
+          <h3>Federated and standardized contracts</h3>
+          <p>Cross-device memory composition, scalable diagnostic evolution, and shared memory interfaces remain key research directions.</p>
+        </article>
       </div>
     </section>
 
@@ -493,7 +746,7 @@
   author      = {Darwin Agent Team},
   institution = {Xiaomi},
   year        = {2026},
-  url         = {https://github.com/Darwin-Agent/Mi-Memory}
+  url         = {https://arxiv.org/abs/2607.18975}
 }</code></pre>
     </section>
 
