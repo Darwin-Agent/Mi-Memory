@@ -29,8 +29,8 @@
 
 ## 📢 News
 
-- **2026-07** — Technical report released on arXiv: [**Mi-Memory: A Lifecycle Memory Framework for Personal AI**](https://arxiv.org/abs/2607.18975).
-- **2026-07** — Repository is live as a project introduction page with the report PDF and overview figures.
+- **2026-07** — Technical report posted on arXiv: [**Mi-Memory: A Lifecycle Memory Framework for Personal AI**](https://arxiv.org/abs/2607.18975).
+- **2026-07** — Repository currently hosts the project introduction page, report PDF, and overview figures.
 
 ## 🧭 Overview
 
